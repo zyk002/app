@@ -1,0 +1,22 @@
+name: Build APK
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build APK with Docker
+        run: |
+          docker run --rm \
+          -v ${{ github.workspace }}:/home/user/hostcwd \
+          kivy/buildozer:latest \
+          android debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: LeapYear
+          path: bin/*.apk
