@@ -1,5 +1,6 @@
-name: Android Build
+name: Build APK
 
+# 触发条件：每次 push 到 main 分支就编译
 on:
   push:
     branches:
@@ -10,10 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # 1️⃣ 获取你的仓库代码
     - uses: actions/checkout@v4
 
-    - name: Build with Buildozer
+    # 2️⃣ 使用 Buildozer 云端 action 编译 APK
+    - name: Build APK
       uses: ArtemSBulgakov/buildozer-action@v1
-
       with:
         command: buildozer android debug
