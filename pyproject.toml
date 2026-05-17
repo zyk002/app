@@ -1,0 +1,7 @@
+[tool.flet]
+app_name = "简约闰年查询"
+bundle_id = "com.zyk.leapyear"
+build_version = "1.0.0"
+
+[tool.flet.android]
+split_per_abi = true
