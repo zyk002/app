@@ -12,8 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup uv
-        uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -27,7 +26,7 @@ jobs:
           flutter-version: '3.22.2'
 
       - name: Install Flet
-        run: uv pip install flet --system
+        run: pip install flet
 
       - name: Build APK
         run: |
